@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         /* 再生中ならスライドバーを動かす */
-                        if (mediaPlayer == null && mediaPlayer.isPlaying()) {
+                        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
                             seekBarMusic.setProgress(mediaPlayer.getCurrentPosition());
                         }
                     }
