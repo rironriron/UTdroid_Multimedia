@@ -39,27 +39,12 @@ public class MainActivity extends AppCompatActivity {
         /* ボリュームキーの対象を着信音量からメディア音量に変更 */
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-        /* 音楽プレーヤーの準備（rawフォルダから読み出す場合） */
-        mediaPlayer = MediaPlayer.create(this, R.raw.beethoven);
-
-        /* 音楽プレイヤーの準備（SDカードから読み出す場合） */
-        /* mediaPlayer = new MediaPlayer();
-        try {
-            mediaPlayer.setDataSource("/sdcard/filename.mp3");
-            mediaPlayer.prepare();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } */
-
         /* それぞれの名前に対応するViewを取得する */
         seekBarMusic = (SeekBar) findViewById(R.id.seekBarMusic);
         buttonMusicPlay = (Button) findViewById(R.id.buttonMusicPlay);
         buttonMusicPause = (Button) findViewById(R.id.buttonMusicPause);
         buttonMusicStop = (Button) findViewById(R.id.buttonMusicStop);
         videoView = (VideoView) findViewById(R.id.videoView);
-
-        /* スライドバーの最大値を曲の長さ（ms単位）に */
-        seekBarMusic.setMax(mediaPlayer.getDuration());
 
         /* スライドバーを操作した時の動作を指定する */
         seekBarMusic.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -123,6 +108,29 @@ public class MainActivity extends AppCompatActivity {
 
         /* 動画プレーヤーの準備（SDカード内のファイルを再生する場合）*/
         /* videoView.setVideoPath("/sdcard/aurora.mp4"); */
+    }
+
+    /**
+     * アプリケーションの再開時に呼ばれるメソッド
+     */
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        /* 音楽プレーヤーの準備（rawフォルダから読み出す場合） */
+        mediaPlayer = MediaPlayer.create(this, R.raw.beethoven);
+
+        /* 音楽プレイヤーの準備（SDカードから読み出す場合） */
+        /* mediaPlayer = new MediaPlayer();
+        try {
+            mediaPlayer.setDataSource("/sdcard/filename.mp3");
+            mediaPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } */
+
+        /* スライドバーの最大値を曲の長さ（ms単位）に */
+        seekBarMusic.setMax(mediaPlayer.getDuration());
     }
 
     /**
