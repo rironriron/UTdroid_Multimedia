@@ -12,7 +12,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize"> <!-- 画面回転時にActivityが再生成されるのを防ぐ -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
