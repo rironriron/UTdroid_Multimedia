@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.aurora));
 
         /* 動画プレーヤーの準備（SDカード内のファイルを再生する場合）*/
-        /* videoView.setVideoPath("/sdcard/aurora.mp4"); */
+        /* videoView.setVideoPath(Environment.getExternalStorageDirectory() + "/filename.mp4"); */
     }
 
     /**
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         /* 音楽プレイヤーの準備（SDカードから読み出す場合） */
         /* mediaPlayer = new MediaPlayer();
         try {
-            mediaPlayer.setDataSource("/sdcard/filename.mp3");
+            mediaPlayer.setDataSource(Environment.getExternalStorageDirectory() + "/filename.mp3");
             mediaPlayer.prepare();
         } catch (IOException e) {
             e.printStackTrace();
